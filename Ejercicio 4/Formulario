@@ -1,0 +1,115 @@
+<html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulario con Resultados</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            flex-direction: column;
+        }
+        form {
+            background-color: #fff;
+            padding: 40px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 400px;
+        }
+        label {
+            display: block;
+            margin-bottom: 8px;
+        }
+        input, select {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 7px;
+        }
+        button {
+            background-color: #28a745;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            border-radius: 4px;
+        }
+        button:hover {
+            background-color: #218838;
+        }
+        #resultados {
+            margin-top: 20px;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 400px;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+
+    <form id="miFormulario">
+        <label for="nombre">Nombre:</label>
+        <input type="text" id="nombre" name="nombre" required>
+
+        <label for="carrera">Carrera:</label>
+        <input type="text" id="carrera" name="carrera" required>
+
+        <label for="email">Correo Electrónico:</label>
+        <input type="email" id="email" name="email" required>
+
+        <label for="fecha-nacimiento">Fecha de Nacimiento:</label>
+        <input type="date" id="fecha-nacimiento" name="fecha-nacimiento" required>
+
+        <label for="telefono">Número de Teléfono:</label>
+        <input type="tel" id="telefono" name="telefono" pattern="[0-9]{10}" placeholder="10 dígitos" required>
+
+        <button type="submit">Enviar</button>
+    </form>
+
+    <div id="resultados">
+        <h2>Datos ingresados:</h2>
+        <p><strong>Nombre:</strong> <span id="resNombre"></span></p>
+        <p><strong>Carrera:</strong> <span id="resCarrera"></span></p>
+        <p><strong>Correo Electrónico:</strong> <span id="resEmail"></span></p>
+        <p><strong>Fecha de Nacimiento:</strong> <span id="resFechaNacimiento"></span></p>
+        <p><strong>Número de Teléfono:</strong> <span id="resTelefono"></span></p>
+    </div>
+
+    <script>
+        document.getElementById('miFormulario').addEventListener('submit', function(event) {
+            event.preventDefault(); // Prevenir el envío del formulario
+
+            // Obtener los valores ingresados
+            var nombre = document.getElementById('nombre').value;
+            var carrera = document.getElementById('carrera').value;
+            var email = document.getElementById('email').value;
+            var fechaNacimiento = document.getElementById('fecha-nacimiento').value;
+            var telefono = document.getElementById('telefono').value;
+
+            // Mostrar los valores en pantalla
+            document.getElementById('resNombre').textContent = nombre;
+            document.getElementById('resCarrera').textContent = carrera;
+            document.getElementById('resEmail').textContent = email;
+            document.getElementById('resFechaNacimiento').textContent = fechaNacimiento;
+            document.getElementById('resTelefono').textContent = telefono;
+
+            // Mostrar el div de resultados
+            document.getElementById('resultados').style.display = 'block';
+        });
+    </script>
+
+</body>
+</html>
